@@ -8,6 +8,8 @@ CITY_DATA = {'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
+MONTH_DATA = ['january', 'february', 'march', 'april', 'may', 'june']
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -21,10 +23,9 @@ def get_filters():
 
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid input
     while True:
-        cities = ['chicago', 'new york city', 'washington']
         city = input('Which city dou you want to explore? : ').lower()
         if city not in CITY_DATA:
-            print("You can input only {}, {}, {}".format(*cities))
+            print("You can input only {}, {}, {}".format(*CITY_DATA.keys()))
             continue
 
         break
@@ -80,8 +81,7 @@ def load_data(city, month, day):
     # filter by month if applicable
     if month != 'all':
         # use the index of the months list to get the corresponding int
-        months = ['january', 'february', 'march', 'april', 'may', 'june']
-        month = months.index(month) + 1
+        month = MONTH_DATA.index(month) + 1
 
         # filter by month to create the new dataframe
         df = df[df['month'] == month]
@@ -101,10 +101,9 @@ def time_stats(df):
     start_time = time.time()
 
     # display the most common month
-    months = ['january', 'february', 'march', 'april', 'may', 'june']
 
     popular_month = df['month'].value_counts().index[0]
-    print('The most frequent month: ', months[popular_month -1 ])
+    print('The most frequent month: ', MONTH_DATA[popular_month -1 ])
 
     # display the most common day of week
     popular_day_of_week = df['day_of_week'].value_counts().index[0]
