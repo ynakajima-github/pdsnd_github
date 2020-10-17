@@ -3,7 +3,6 @@
 2020/10/17
 
 ### Project Title
-Replace the Project Title
 **Bike Share usage analysis**
 
 ### Description
