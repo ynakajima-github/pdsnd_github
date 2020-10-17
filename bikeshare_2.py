@@ -19,10 +19,9 @@ def get_filters():
 
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid input
     while True:
-        cities = ['chicago', 'new york city', 'washington']
         city = input('Which city dou you want to explore? : ').lower()
         if city not in CITY_DATA:
-            print("You can input only {}, {}, {}".format(*cities))
+            print("You can input only {}, {}, {}".format(*CITY_DATA.keys()))
             continue
 
         break
